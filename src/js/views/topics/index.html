@@ -1,0 +1,7 @@
+<ul class="row">
+  <li ng-repeat="topic in topicsIndex.all" class="col-md-4 col-sm-6">
+    <h1><a ui-sref="topicsShow({id: topic.id })">{{ topic.title }}</a></h1>
+    <h3 ng-if="topic.subtitles.length">{{ topic.selected_subtitle }}</h3>
+    <h4>{{ topic.tweet_volume }} tweets</h4>
+  </li>
+</ul>

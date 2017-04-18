@@ -1,0 +1,17 @@
+<div>
+  <h2>{{ topicsShow.topic.title }}</h2>
+  <h4>{{ topicsShow.topic.selected_subtitle }}</h4>
+</div>
+
+<ul class="row">
+  <li ng-repeat="comment in topicsShow.topic.comments" class="col-12 comments">
+    <div class="comment-user">{{ comment.user.username }}</div>
+    <div class="comment-body">{{ comment.body }}</div>
+  </li>
+</ul>
+
+<form ng-submit="topicsShow.postComment()">
+  <label for="comment">Comment</label><br>
+  <textarea name="comment" rows="4" cols="60" ng-model="topicsShow.comment.body"></textarea>
+  <button>Post</button>
+</form>

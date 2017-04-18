@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="forumApp">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <title>Angular Stack Setup</title>
     <!-- inject:js -->
@@ -9,5 +10,13 @@
     <!-- endinject -->
   </head>
   <body>
+    <nav>
+      <ul>
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="topicsIndex">Topics</a></li>
+      </ul>
+    </nav>
+    <main ui-view class="container">
+    </main>
   </body>
 </html>
