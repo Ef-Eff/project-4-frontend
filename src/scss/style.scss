@@ -8,16 +8,37 @@ body, html {
 
 li {
   list-style: none;
+  a {
+    display: inline;
+  }
 }
 
 .comments {
-  min-height: 150px;
-  background-color: red;
-  margin-bottom: 5px;
-  .comment-user {
+  border: 2px double rgba(0,0,0,0.5);
+  border-radius: 2px;
+  height: 200px;
+  background-color: grey;
+  margin-bottom: 8px;
+  div:first-of-type {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 6px;
+    height: 196px;
+
+    background-color: slategrey;
+    border-right: 1px solid rgba(0,0,0,0.2);
+    img {
+      max-height: 130px;
+      border-radius: 1px;
+    }
+  }
+  div:last-of-type {
+    padding: 15px;
+  }
+  img {
+    height: 150px;
+    max-width: 200px;
     float: left;
-    min-width: 200px;
-    min-height: 150px;
-    background-color: orange;
+    margin-right: 10px;
   }
 }

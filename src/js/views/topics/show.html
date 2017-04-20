@@ -3,14 +3,23 @@
   <h4>{{ topicsShow.topic.selected_subtitle }}</h4>
 </div>
 
-<ul class="row">
-  <li ng-repeat="comment in topicsShow.topic.comments" class="col-12 comments">
-    <div class="comment-user">{{ comment.user.username }}</div>
-    <div class="comment-body">{{ comment.body }}</div>
+<ul>
+  <li ng-repeat="comment in topicsShow.topic.comments">
+    <div class="row comments">
+      <div class="col-xs-2">
+        {{ comment.user.username }}
+        <img ng-src="{{ comment.user.profile_pic_url }}" ng-if="comment.user.profile_pic_url">
+      </div>
+      <div class="col-xs-10">
+        <img ng-src="{{ comment.image_src }}" ng-if="comment.image_src">
+        <p>{{ comment.body }}</p>
+      </div>
+    </div>
   </li>
 </ul>
 
 <form ng-submit="topicsShow.postComment()">
+  <input type="file" base64 name="base64" id="base64" ng-model="topicsShow.comment.base64">
   <label for="comment">Comment</label><br>
   <textarea name="comment" rows="4" cols="60" ng-model="topicsShow.comment.body"></textarea>
   <button>Post</button>

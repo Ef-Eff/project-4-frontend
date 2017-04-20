@@ -1,14 +1,21 @@
 angular
   .module('forumApp')
-  .controller('RegisterCtrl', RegisterCtrl)
-  .controller('LoginCtrl', LoginCtrl);
+  .controller('AuthCtrl', AuthCtrl);
 
-RegisterCtrl.$inject = [];
-function RegisterCtrl() {
+AuthCtrl.$inject = ['$auth', '$state'];
+function AuthCtrl($auth, $state) {
+  const vm = this;
 
-}
+  function register() {
+    $auth.signup(vm.user)
+      .then(() => $state.go('login'));
+  }
 
-LoginCtrl.$inject = [];
-function LoginCtrl() {
+  vm.register = register;
 
+  function login() {
+    $auth.login(vm.credentials)
+      .then(() => $state.go('topicsIndex'));
+  }
+  vm.login = login;
 }

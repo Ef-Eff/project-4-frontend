@@ -16,19 +16,20 @@ TopicsShowCtrl.$inject = ['Topic', '$stateParams', 'Comment'];
 function TopicsShowCtrl(Topic, $stateParams, Comment) {
   const vm = this;
 
-  vm.topic = Topic.get($stateParams);
+  Topic.get($stateParams).$promise.then((topic) => {
+    vm.topic = topic;
+  });
 
   vm.postComment = postComment;
 
   function postComment() {
-    vm.comment.user_id = 1;
-    vm.comment.topic_id = $stateParams.id;
+    vm.comment.topic_id = vm.topic.id;
     Comment
-    .save(vm.comment)
-    .$promise
-    .then((response) => {
-      vm.topic.comments.push(response);
-      vm.comment = {};
-    });
+      .save({ id: vm.comment.id, comment: vm.comment })
+      .$promise
+      .then((response) => {
+        vm.topic.comments.push(response);
+        vm.comment = {};
+      });
   }
 }
