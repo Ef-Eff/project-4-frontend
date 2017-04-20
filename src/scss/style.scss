@@ -12,20 +12,33 @@ li {
     display: inline;
   }
 }
+ul {
+  padding-left: 0px;
+}
 
 .comments {
   border: 2px double rgba(0,0,0,0.5);
   border-radius: 2px;
-  height: 200px;
-  background-color: grey;
+  min-height: 230px;
   margin-bottom: 8px;
+  background-color: rgba(0,0,0,0.1);
+  span:first-of-type { // Top of comment, shows comment number
+    font-weight: bold;
+    display: block;
+    height: 25px;
+    background-color: rgb(64,153,255);
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    padding: 2px;
+    font-size: 15px;
+  }
+  span:last-of-type {
+    display: block;
+  }
   div:first-of-type {
     font-weight: bold;
     font-size: 18px;
     padding: 6px;
-    height: 196px;
-
-    background-color: slategrey;
+    height: 201px;
     border-right: 1px solid rgba(0,0,0,0.2);
     img {
       max-height: 130px;
