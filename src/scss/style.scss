@@ -1,3 +1,5 @@
+$twitter: #419BF9;
+
 * {
   box-sizing: border-box;
 }
@@ -12,24 +14,80 @@ li {
     display: inline;
   }
 }
+
 ul {
   padding-left: 0px;
 }
 
+.base64 {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.base64 + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.base64:focus + label,
+.base64 + label:hover {
+    background-color: red;
+}
+
+nav {
+  background-color: $twitter;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 2px -13px 22px 7px rgba(0,0,0,0.40);
+  -moz-box-shadow: 2px -13px 22px 7px rgba(0,0,0,0.40);
+  box-shadow: 2px -13px 22px 7px rgba(0,0,0,0.40);
+  li {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 16px;
+    a {
+      color: white;
+    }
+  }
+}
+
+.topic-header {
+  h2 {
+    margin-top: 0;
+  }
+}
+
 .comments {
-  border: 2px double rgba(0,0,0,0.5);
   border-radius: 2px;
   min-height: 230px;
   margin-bottom: 8px;
-  background-color: rgba(0,0,0,0.1);
-  span:first-of-type { // Top of comment, shows comment number
+  background-color: rgba(0,0,0,0.03);
+  -webkit-box-shadow: 4px 2px 8px 0px rgba(0,0,0,0.17);
+  -moz-box-shadow: 4px 2px 8px 0px rgba(0,0,0,0.17);
+  box-shadow: 4px 2px 8px 0px rgba(0,0,0,0.17);
+  position: relative;
+  .comment-bar { // Top of comment, shows comment number
     font-weight: bold;
+    color: white;
     display: block;
-    height: 25px;
+    height: 30px;
     background-color: rgb(64,153,255);
-    border-bottom: 1px solid rgba(0,0,0,0.4);
-    padding: 2px;
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+    padding: 3px;
     font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    span {
+      float: right;
+    }
   }
   span:last-of-type {
     display: block;
@@ -40,6 +98,7 @@ ul {
     padding: 6px;
     height: 201px;
     border-right: 1px solid rgba(0,0,0,0.2);
+    padding-left: 15px;
     img {
       max-height: 130px;
       border-radius: 1px;
@@ -47,6 +106,16 @@ ul {
   }
   div:last-of-type {
     padding: 15px;
+    position: static;
+    .comment-footer {
+      position: absolute !important;
+      right: 0;
+      bottom: 0;
+      border-right: 0px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding: 15px;
+      height: 60px;
+    }
   }
   img {
     height: 150px;

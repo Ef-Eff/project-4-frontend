@@ -19,7 +19,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'AuthCtrl as auth'
     })
     .state('404', {
-      url: '/whereTheHellIsThis',
+      url: '/where-the-hell-is-this',
       templateUrl: 'js/views/static/404.html',
       controller: 'NotFoundCtrl'
     })
@@ -29,8 +29,12 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
     })
     .state('profile', {
       url: '/profile',
-      templateUrl: 'js/views/users/profile.html',
-      controller: 'UsersProfileCtrl as usersProfile'
+      templateUrl: 'js/views/profile/show.html',
+      controller: 'ProfileCtrl as profile'
+    })
+    .state('profile.message', {
+      url: '/profile/message',
+      templateUrl: 'js/views/profile/message.html'
     })
     .state('topicsIndex', {
       url: '/topics',
@@ -38,11 +42,11 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'TopicsIndexCtrl as topicsIndex'
     })
     .state('topicsShow', {
-      url: '/topics/:id',
+      url: '/topics/:id/:page',
       templateUrl: 'js/views/topics/show.html',
       controller: 'TopicsShowCtrl as topicsShow'
     });
 
 
-  $urlRouterProvider.otherwise('/whereTheHellIsThis');
+  $urlRouterProvider.when('/', '/home').otherwise('/where-the-hell-is-this');
 }

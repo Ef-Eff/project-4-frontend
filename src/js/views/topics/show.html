@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row topic-header">
   <div class="col-xs-6">
     <h2>{{ topicsShow.topic.title }}</h2>
     <h4>{{ topicsShow.topic.selected_subtitle }}</h4>
@@ -15,7 +15,7 @@
 <ul>
   <li ng-repeat="comment in topicsShow.topic.comments">
     <div class="row comments">
-      <span>Comment #{{ $index + 1 }}</span>
+      <span class="comment-bar">Comment #{{ $index + 1 }}<span>Upvotes: {{ comment.votes.length }}</span></span>
       <div class="col-xs-4 col-sm-3 col-md-2">
         <p>{{ comment.user.username }}</p>
         <img ng-src="{{ comment.user.profile_pic_url }}" ng-if="comment.user.profile_pic_url"><br>
@@ -23,15 +23,19 @@
       </div>
       <div class="col-xs-8 col-sm-9 col-md-10">
         <img ng-src="{{ comment.image_src }}" ng-if="comment.image_src">
-        <p>{{ comment.body }}</p>
+        <p>{{ comment.body }}</p> <button ng-click="topicsShow.upvote({ subject_type: 'Comment', subject_id: comment.id, value: 1 })">Upvote</button>
+        <div class="comment-footer col-xs-8 col-sm-9 col-md-10">
+          <hr>
+        </div>
       </div>
     </div>
   </li>
 </ul>
 
 <form ng-submit="topicsShow.postComment()">
-  <input type="file" base64 name="base64" id="base64" ng-model="topicsShow.comment.base64">
-  <label for="comment">Comment</label><br>
+  <input type="file" base64 name="base64" id="base64" class="base64" ng-model="topicsShow.comment.base64">
+  <label for="base64">Image Upload</label>
+  <label for="comment">Comment</label>
   <textarea name="comment" rows="4" cols="60" ng-model="topicsShow.comment.body"></textarea>
   <button>Post</button>
 </form>
