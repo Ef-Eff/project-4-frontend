@@ -1,41 +1,78 @@
-<div class="row topic-header">
-  <div class="col-xs-6">
-    <h2>{{ topicsShow.topic.title }}</h2>
-    <h4>{{ topicsShow.topic.selected_subtitle }}</h4>
+<div class="container">
+
+  <div class="row topic-header">
+    <div class="col-xs-7  topic-header-left">
+      <h2>{{ topicsShow.topic.title }}</h2>
+      <div class="row">
+      <h5 class="col-sm-4">{{ topicsShow.topic.selected_subtitle }}</h5>
+      <form class="col-sm-8">
+      <input type="text" name="subtitle" id="subtitile" ng-model="topicsShow.subtitle.title" placeholder="Make a subtitle suggestion">
+      <button class="subtitle-submit" ng-click="topicsShow.postSubtitle()">Submit</button>
+      </form>
+    </div>
+    </div>
+    <div class="col-xs-5 topic-header-right">
+      <div class="row">
+
+      </div>
+      <div class="row">
+        <button>Comment</button>
+      </div>
+    </div>
   </div>
-  <div class="col-xs-6">
-    <form ng-submit="topicsShow.postSubtitle()">
-      <label for="subtitle">Make a subtitle suggestion</label><br>
-      <input type="text" name="subtitle" id="subtitile" ng-model="topicsShow.subtitle.title">
-      <button>Submit</button>
+  <button class="subtitle-button" ng-click="topicsShow.votingVisible = !topicsShow.votingVisible">Vote on a subtitle</button>
+
+  <div class="" ng-show="topicsShow.votingVisible">
+    <form ng-submit="topicsShow.voteOnSubtitle()">
+      <label ng-repeat="subtitle in topicsShow.topic.subtitles">
+        {{ subtitle.title }} - {{ subtitle.votes.length }}
+      <input type="radio" name="subtitle" value="{{ subtitle.id }}" ng-model="topicsShow.subtitleVote.subject_id">
+      </label>
+      <button class="subtitle-button">Vote</button>
+    </form>
+  </div>
+
+  <ul>
+    <li ng-repeat="comment in topicsShow.topic.comments">
+      <div class="row comments">
+        <span class="comment-bar">Comment #{{ $index + 1 }}<span>Upvotes: {{ comment.votes.length }}</span></span>
+        <div class="col-xs-4 col-sm-3 col-md-2">
+          <p>{{ comment.user.username }}</p>
+          <img ng-src="{{ comment.user.profile_pic_url }}" ng-if="comment.user.profile_pic_url"><br>
+          <p>Karma: {{ comment.user.karma }}</p>
+        </div>
+        <div class="col-xs-8 col-sm-9 col-md-10">
+          <img ng-src="{{ comment.image_src }}" ng-if="comment.image_src">
+          <p>{{ comment.body }}</p>
+          <div class="comment-footer col-xs-8 col-sm-9 col-md-10">
+            <ul>
+              <li><a ui-sref="home">Profile</a></li>
+              <li>|</li>
+              <li><a ui-sref="home">Private Message</a></li>
+              <li><button>Downvote</button></li>
+              <li><button>Upvote</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="row">
+    <form ng-submit="topicsShow.postComment()" class="comment-form">
+      <label for="comment">Comment</label>
+      <textarea name="comment" ng-model="topicsShow.comment.body"></textarea>
+      <input type="file" base64 name="base64" id="base64" class="base64" ng-model="topicsShow.comment.base64">
+      <label for="base64">Image Upload</label>
+      <button class="comment-post">Post</button>
     </form>
   </div>
 </div>
 
-<ul>
-  <li ng-repeat="comment in topicsShow.topic.comments">
-    <div class="row comments">
-      <span class="comment-bar">Comment #{{ $index + 1 }}<span>Upvotes: {{ comment.votes.length }}</span></span>
-      <div class="col-xs-4 col-sm-3 col-md-2">
-        <p>{{ comment.user.username }}</p>
-        <img ng-src="{{ comment.user.profile_pic_url }}" ng-if="comment.user.profile_pic_url"><br>
-        <p>Karma: {{ comment.user.karma }}</p>
-      </div>
-      <div class="col-xs-8 col-sm-9 col-md-10">
-        <img ng-src="{{ comment.image_src }}" ng-if="comment.image_src">
-        <p>{{ comment.body }}</p> <button ng-click="topicsShow.upvote({ subject_type: 'Comment', subject_id: comment.id, value: 1 })">Upvote</button>
-        <div class="comment-footer col-xs-8 col-sm-9 col-md-10">
-          <hr>
-        </div>
-      </div>
-    </div>
-  </li>
-</ul>
-
-<form ng-submit="topicsShow.postComment()">
-  <input type="file" base64 name="base64" id="base64" class="base64" ng-model="topicsShow.comment.base64">
-  <label for="base64">Image Upload</label>
-  <label for="comment">Comment</label>
-  <textarea name="comment" rows="4" cols="60" ng-model="topicsShow.comment.body"></textarea>
-  <button>Post</button>
-</form>
+<div class="topic-footer">
+  <ul>
+    <li><a ui-sref="home">Home</a></li>
+    <li ng-if="main.isAuthenticated()"><a ui-sref="Profile">My Profile</a></li>
+    <li><button>Back To The Top</button></li>
+  </ul>
+</div>

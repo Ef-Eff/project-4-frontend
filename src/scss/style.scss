@@ -1,11 +1,27 @@
 $twitter: #419BF9;
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+.removeButtonStyling {
+  border: 0px;
+  background-color: inherit;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body, html {
   height: 100%;
+  font-family: 'Poppins', serif;
 }
 
 li {
@@ -19,36 +35,17 @@ ul {
   padding-left: 0px;
 }
 
-.base64 {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-
-.base64 + label {
-  font-size: 1.25em;
-  font-weight: 700;
-  color: white;
-  background-color: black;
-  display: inline-block;
-}
-
-.base64:focus + label,
-.base64 + label:hover {
-    background-color: red;
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 50, 0.2), rgba(0, 0, 50, 0.2)), url('/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
 nav {
   background-color: $twitter;
   height: 50px;
   padding: 10px;
-  margin-bottom: 30px;
-  -webkit-box-shadow: 2px -13px 22px 7px rgba(0,0,0,0.40);
-  -moz-box-shadow: 2px -13px 22px 7px rgba(0,0,0,0.40);
-  box-shadow: 2px -13px 22px 7px rgba(0,0,0,0.40);
   li {
     display: inline-block;
     margin-left: 20px;
@@ -59,32 +56,113 @@ nav {
   }
 }
 
+
+.base64 { // Hide the file button thingy stuff
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.base64 + label {
+  padding: 10px;
+  color: $twitter;
+  background-color: white;
+  display: inline-block;
+  transition: background-color, 0.1s;
+}
+
+.base64:focus + label,
+.base64 + label:hover {
+    background-color: $twitter;
+    color: white;
+}
+
+.subtitle-submit {
+  border: 0px;
+  background-color: inherit;
+  color: $twitter;
+  font-size: 16px;
+}
+
 .topic-header {
-  h2 {
-    margin-top: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .topic-header-left {
+    height: 200px;
+    background-color: rgba(0,0,0,0.045);
+    padding: 30px 25px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+
+    h2 {
+      margin-top: 0;
+      color: $twitter;
+      font-size: 46px;
+      margin-bottom: 20px;
+    }
+    h5 {
+      font-size: 18px;
+    }
+    input {
+      width: 220px;
+      padding: 2px;
+      padding-left: 4px;
+    }
+  }
+
+  .topic-header-right {
+    height: 200px;
+    padding: 30px 25px;
+    text-align: center;
+    div {
+      height: 50%;
+    }
+    button {
+      @extend .removeButtonStyling;
+      background-color: $twitter;
+      color: white;
+      font-size: 18px;
+      padding: 15px 30px;
+    }
+  }
+}
+
+.comment-form {
+  textarea {
+    width: 100%;
+    height: 120px;
+  }
+  button {
+    border: 0px;
+    background-color: $twitter;
+    color: white;
+    padding: 10px;
+    width: 120px;
+    transition: background-color, .2s;
+    &:hover {
+      background-color: lighten($twitter, 7.5%);
+    }
   }
 }
 
 .comments {
   border-radius: 2px;
-  min-height: 230px;
-  margin-bottom: 8px;
-  background-color: rgba(0,0,0,0.03);
-  -webkit-box-shadow: 4px 2px 8px 0px rgba(0,0,0,0.17);
-  -moz-box-shadow: 4px 2px 8px 0px rgba(0,0,0,0.17);
-  box-shadow: 4px 2px 8px 0px rgba(0,0,0,0.17);
+  min-height: 270px;
+  background-color: rgba(0,0,0,0.045);
   position: relative;
   .comment-bar { // Top of comment, shows comment number
     font-weight: bold;
     color: white;
     display: block;
-    height: 30px;
+    height: 32px;
     background-color: rgb(64,153,255);
-    border-bottom: 1px solid rgba(0,0,0,0.14);
-    padding: 3px;
+    padding: 5px;
     font-size: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     span {
       float: right;
     }
@@ -96,7 +174,7 @@ nav {
     font-weight: bold;
     font-size: 18px;
     padding: 6px;
-    height: 201px;
+    height: 239px;
     border-right: 1px solid rgba(0,0,0,0.2);
     padding-left: 15px;
     img {
@@ -107,6 +185,7 @@ nav {
   div:last-of-type {
     padding: 15px;
     position: static;
+    font-family: 'Lato', serif;
     .comment-footer {
       position: absolute !important;
       right: 0;
@@ -114,7 +193,27 @@ nav {
       border-right: 0px;
       border-top: 1px solid rgba(0,0,0,0.1);
       padding: 15px;
-      height: 60px;
+      height: 65px;
+      ul {
+        li {
+          display: inline-block;
+          margin-right: 10px;
+          font-family: 'Poppins', serif;
+          &:nth-child(4), &:nth-child(5) {
+            float: right;
+          }
+          a {
+            color: $twitter;
+            &:hover {
+              color: darken($twitter, 15%);
+            }
+          }
+          button {
+            @extend .removeButtonStyling;
+            color: $twitter;
+          }
+        }
+      }
     }
   }
   img {
@@ -122,5 +221,28 @@ nav {
     max-width: 200px;
     float: left;
     margin-right: 10px;
+  }
+}
+
+.topic-footer {
+  height: 100px;
+  background-color: rgba(0,0,0,0.03);
+  margin-top: 40px;
+  padding-top: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: $twitter;
+  ul {
+    li {
+      display: inline;
+      margin-right: 15px;
+      a {
+        color: $twitter;
+      }
+      button {
+        @extend .removeButtonStyling;
+
+      }
+    }
   }
 }
