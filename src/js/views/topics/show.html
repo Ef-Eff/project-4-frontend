@@ -13,9 +13,6 @@
     </div>
     <div class="col-xs-5 topic-header-right">
       <div class="row">
-
-      </div>
-      <div class="row">
         <button>Comment</button>
       </div>
     </div>
@@ -49,8 +46,8 @@
               <li><a ui-sref="home">Profile</a></li>
               <li>|</li>
               <li><a ui-sref="home">Private Message</a></li>
-              <li><button>Downvote</button></li>
-              <li><button>Upvote</button></li>
+              <li><button ng-click="topicsShow.downVote(comment.id)">Downvote</button></li>
+              <li><button ng-click="topicsShow.upVote(comment.id)">Upvote</button></li>
             </ul>
           </div>
         </div>

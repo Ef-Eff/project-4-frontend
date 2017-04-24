@@ -36,6 +36,10 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
       url: '/profile/message',
       templateUrl: 'js/views/profile/message.html'
     })
+    .state('profile.edit', {
+      url: '/profile/edit',
+      templateUrl: 'js/views/profile/edit.html'
+    })
     .state('topicsIndex', {
       url: '/topics',
       templateUrl: 'js/views/topics/index.html',

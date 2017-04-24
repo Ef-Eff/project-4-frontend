@@ -1,12 +1,17 @@
-<div class="profile">
-  <h1>{{ profile.user.username }}</h1>
-  <img ng-src="{{profile.user.profile_pic_url}}" alt="">
+<div class="container profile">
+  <div class="profile-top">
+    <h1>My Profile</h1>
+    <img ng-src="{{profile.user.profile_pic_url}}">
+    <h2>{{ profile.user.username }}</h2>
+  </div>
 
-  <form ng-submit="profile.edit()">
-    <div class="form-group">
-      <label for="base64">Image</label>
-      <input type="file" base64 name="base64" id="base64" ng-model="profile.user.base64">
-    </div>
-    <button>Edit Profile Pic Famalam</button>
-  </form>
+  <div class="row profile-options">
+    <a ui-sref="profile.inbox" ui-sref-active="active">Inbox</a>
+    <a ui-sref="profile.message" ui-sref-active="active">Private Message</a>
+    <a ui-sref="profile.edit" ui-sref-active="active">Edit Profile</a>
+  </div>
+  <div class="profile-wrapper">
+    <section ui-view class="row profile-settings">
+    </section>
+  </div>
 </div>
