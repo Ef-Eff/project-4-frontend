@@ -21,6 +21,9 @@
         <li ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li>
       </ul>
     </nav>
+    <div class="message" ng-if="main.message">
+      <div class="container">{{main.message}}</div>
+    </div>
     <main ui-view>
     </main>
   </body>

@@ -1,3 +1,17 @@
-<div class="">
-  message
+<div class="private-message">
+  <form ng-submit="profileMessage.privateMessage()" class="col-sm-8">
+    <label for="subject">Subject</label><br>
+    <input type="text" ng-model="profileMessage.message.subject" name="subject" id="subject"><br>
+    <label for="body">Body</label><br>
+    <textarea ng-model="profileMessage.message.body" name="body" id="body"></textarea><br>
+    <button>Submit</button>
+  </form>
+
+  <div class="col-sm-4">
+    <h4>Users</h4>
+    <select ng-model="profileMessage.message.receiver_id">
+      <option disabled selected value="">Select a user</option>
+      <option ng-repeat="user in profileMessage.users" ng-value="user.id">{{ user.username }}</option>
+    </select>
+  </div>
 </div>

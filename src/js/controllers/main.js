@@ -16,7 +16,7 @@ function MainCtrl($rootScope, $state, $auth) {
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) vm.currentUser = $auth.getPayload();
-    console.log($state.current);
+
   });
 
   const protectedStates = ['profile'];

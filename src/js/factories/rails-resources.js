@@ -4,7 +4,8 @@ angular
   .factory('Comment', Comment)
   .factory('Subtitle', Subtitle)
   .factory('User', User)
-  .factory('Vote', Vote);
+  .factory('Vote', Vote)
+  .factory('Message', Message);
 
 Topic.$inject = ['API_URL', '$resource'];
 function Topic(API_URL, $resource) {
@@ -37,4 +38,9 @@ function Vote(API_URL, $resource) {
   return new $resource(`${API_URL}/votes/:id`, { id: '@id' }, {
     update: { method: 'PUT' }
   });
+}
+
+Message.$inject = ['API_URL', '$resource'];
+function Message(API_URL, $resource) {
+  return new $resource(`${API_URL}/messages/:id`, { id: '@id' });
 }

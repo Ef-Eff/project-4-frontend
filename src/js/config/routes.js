@@ -33,12 +33,19 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'ProfileCtrl as profile'
     })
     .state('profile.message', {
-      url: '/profile/message',
-      templateUrl: 'js/views/profile/message.html'
+      url: '/message',
+      templateUrl: 'js/views/profile/message.html',
+      controller: 'ProfileMessageCtrl as profileMessage'
     })
     .state('profile.edit', {
-      url: '/profile/edit',
-      templateUrl: 'js/views/profile/edit.html'
+      url: '/edit',
+      templateUrl: 'js/views/profile/edit.html',
+      controller: 'ProfileEditCtrl as profileEdit'
+    })
+    .state('profile.inbox', {
+      url: '/inbox',
+      templateUrl: 'js/views/profile/inbox.html',
+      controller: 'ProfileInboxCtrl as profileInbox'
     })
     .state('topicsIndex', {
       url: '/topics',

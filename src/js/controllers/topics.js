@@ -63,19 +63,26 @@ function TopicsShowCtrl(Topic, $stateParams, Comment, Subtitle, Vote, $state) {
   }
 
   vm.upVote = upVote;
-  function upVote(commentId) {
-    const vote = { subject_id: commentId, subject_type: 'Comment', value: 1 };
+  function upVote(comment) {
+    const vote = { subject_id: comment.id, subject_type: 'Comment', value: 1 };
     Vote
       .save(vote)
       .$promise
-      .then(() => console.log('lmao'));
+      .then(() => {
+        const index = vm.topic.comments.indexOf(comment);
+        vm.topic.comments[index].vote_score += 1;
+      });
   }
+  
   vm.downVote = downVote;
-  function downVote(commentId) {
-    const vote = { subject_id: commentId, subject_type: 'Comment', value: -1 };
+  function downVote(comment) {
+    const vote = { subject_id: comment.id, subject_type: 'Comment', value: -1 };
     Vote
       .save(vote)
       .$promise
-      .then(() => console.log('lmao'));
+      .then(() => {
+        const index = vm.topic.comments.indexOf(comment);
+        vm.topic.comments[index].vote_score -= 1;
+      });
   }
 }
