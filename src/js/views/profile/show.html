@@ -1,7 +1,7 @@
 <div class="container profile">
   <div class="profile-top">
     <h1>My Profile</h1>
-    <img ng-src="{{profile.user.profile_pic_url}}">
+    <img ng-src="{{profile.user.profile_pic_url}}" ng-if="profile.user.profile_pic_url">
     <h2>{{ profile.user.username }}</h2>
   </div>
 

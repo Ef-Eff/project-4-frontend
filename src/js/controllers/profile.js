@@ -44,10 +44,12 @@ function ProfileMessageCtrl(Message, User) {
 ProfileEditCtrl.$inject = ['User'];
 function ProfileEditCtrl(User) {
   const vm = this;
-  vm.kek = function(e) {
-    console.log(e.target);
-  };
+  // vm.kek = function() {
+  //   var hello = document.querySelectorAll('button')[1];
+  //   hello.innerHTML = 'Cmon SON';
+  // };
 }
+
 ProfileInboxCtrl.$inject = ['User'];
 function ProfileInboxCtrl(User) {
   const vm = this;

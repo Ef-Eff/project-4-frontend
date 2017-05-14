@@ -46,12 +46,7 @@ function TopicsShowCtrl(Topic, $stateParams, Comment, Subtitle, Vote, $state) {
         vm.comment = {};
       });
   }
-
-  // vm.paginateComments = paginateComments;
-  // function paginateComments() {
-  //   vm.paginatedComments = vm.topic.comments.slice($stateParams.page - 1, $stateParams.page + 9);
-  // }
-
+  
   vm.postSubtitle = postSubtitle;
 
   function postSubtitle() {
@@ -73,7 +68,7 @@ function TopicsShowCtrl(Topic, $stateParams, Comment, Subtitle, Vote, $state) {
         vm.topic.comments[index].vote_score += 1;
       });
   }
-  
+
   vm.downVote = downVote;
   function downVote(comment) {
     const vote = { subject_id: comment.id, subject_type: 'Comment', value: -1 };

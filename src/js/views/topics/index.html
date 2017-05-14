@@ -1,7 +1,7 @@
 <div class="container">
 
 <ul class="row">
-  <li ng-repeat="topic in topicsIndex.all" class="col-md-4 col-sm-6">
+  <li ng-repeat="topic in topicsIndex.all" class="col-md-4 col-sm-6 topics-index">
     <h1><a ui-sref="topicsShow({id: topic.id, page: 1 })">{{ topic.title }}</a></h1>
     <h3 ng-if="topic.subtitles.length">{{ topic.selected_subtitle }}</h3>
     <h4>{{ topic.comments.length }} Comments</h4>
@@ -9,5 +9,3 @@
   </li>
 </ul>
 </div>
-
-  

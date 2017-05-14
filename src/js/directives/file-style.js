@@ -7,7 +7,7 @@ function label() {
     restrict: 'A',
     link($scope, element) {
       const label = element[0].nextElementSibling;
-      console.log(label);
+      
       let fileName = '';
       element[0].addEventListener('change', function(e) {
         fileName = e.target.value.split('\\').pop();
