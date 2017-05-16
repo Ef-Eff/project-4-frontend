@@ -1,11 +1,9 @@
-<div class="">
+<div class="profile-edit">
   <form ng-submit="profile.edit()">
     <div>
-      <input type="file" base64 name="base64" id="base64" class="base64" ng-model="profile.user.base64">
-      <label label for="base64">Image</label>
+      <input type="file" label base64 name="base64" id="base64" class="base64" ng-model="profile.user.base64">
+      <label id="image" for="base64">Image</label>
     </div>
-
     <button>Edit</button>
   </form>
-  <button ng-click="profileEdit.kek()" type="button" name="button">Lmayo</button>
 </div>

@@ -44,7 +44,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
     })
     .state('profile.inbox', {
       url: '/inbox',
-      templateUrl: 'js/views/profile/inbox.html',
+      templateUrl: 'js/views/profile/inoutbox.html',
       controller: 'ProfileInboxCtrl as profileInbox'
     })
     .state('topicsIndex', {
@@ -53,11 +53,10 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'TopicsIndexCtrl as topicsIndex'
     })
     .state('topicsShow', {
-      url: '/topics/:id/:page',
+      url: '/topics/:id',
       templateUrl: 'js/views/topics/show.html',
       controller: 'TopicsShowCtrl as topicsShow'
     });
-
 
   $urlRouterProvider.when('/', '/home').otherwise('/where-the-hell-is-this');
 }

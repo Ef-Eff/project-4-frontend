@@ -1,0 +1,22 @@
+<div class="inbox">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Messages Received</h1>
+      <p ng-if="profile.user.messages_received.length === 0">No messages received.</p>
+      <p ng-if="profile.user.messages_received.length > 0" ng-repeat="message in profile.user.messages_received | limitTo: 5">
+        Received {{ message.created_at | date: 'short' }}<br>
+        Subject: {{ message.subject }}
+        <img ng-if="message.image_src" ng-src="{{ message.image_src }}">
+      </p>
+    </div>
+    <div class="col-sm-6">
+      <h1>Messages Sent</h1>
+      <p ng-if="profile.user.messages_sent.length === 0">No messages sent.</p>
+      <p ng-if="profile.user.messages_sent.length > 0" ng-repeat="message in profile.user.messages_sent | limitTo: 5">
+        Sent {{ message.created_at | date: 'short' }} To {{ message.receiver.username }}<br>
+        Subject: {{ message.subject }}
+        <img ng-if="message.image_src" ng-src="{{ message.image_src }}">
+      </p>
+    </div>
+  </div>
+</div>

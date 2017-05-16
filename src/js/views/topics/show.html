@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="row topic-header">
+  <div class="row topic-header" id="topic-title">
     <div class="col-xs-7  topic-header-left">
       <h2>{{ topicsShow.topic.title }}</h2>
       <div class="row">
@@ -13,11 +13,11 @@
     </div>
     <div class="col-xs-5">
       <div class="row topic-header-right">
-        <div class="col-xs-12">
+        <div class="col-xs-12 comment-buttons">
           <button class="subtitle-button" ng-if="main.isAuthenticated() && topicsShow.topic.subtitles.length" ng-click="topicsShow.votingVisible = !topicsShow.votingVisible">Vote on a subtitle</button>
         </div>
-        <div class="col-xs-12">
-          <button class="comment-button" ng-click="topicsShow.commentBoxVisible = !topicsShow.commentBoxVisible" ng-if="main.isAuthenticated()">Comment</button>
+        <div class="col-xs-12 comment-buttons">
+          <button class="comment-button" id="comment-button" ng-click="topicsShow.commentBoxVisible = !topicsShow.commentBoxVisible" ng-if="main.isAuthenticated()">Comment</button>
         </div>
       </div>
     </div>
@@ -29,11 +29,11 @@
       <label ng-repeat="subtitle in topicsShow.topic.subtitles">
         {{ subtitle.title }}<br>
       <input type="radio" name="subtitle" value="{{ subtitle.id }}" ng-model="topicsShow.subtitleVote.subject_id">
-      {{ subtitle.votes.length }} Votes - By: {{ subtitle.user.username }}
+      <span class="poppins-semi">{{ subtitle.votes.length }} Votes - Submitted By: {{ subtitle.user.username }}</span>
       </label>
       </div>
       <div class="col-xs-4">
-      <button>Vote</button>
+        <button>Vote</button>
       </div>
     </form>
   </div>
@@ -52,8 +52,6 @@
           <p>{{ comment.body }}</p>
           <div class="comment-footer col-xs-8 col-sm-9 col-md-10">
             <ul>
-              <li><a ui-sref="home">Profile</a></li>
-              <li><a ui-sref="home">Private Message</a></li>
               <li><button ng-click="topicsShow.downVote(comment)" id="downvote">Downvote</button></li>
               <li><button ng-click="topicsShow.upVote(comment)" id="upvote">Upvote</button></li>
             </ul>
@@ -77,7 +75,6 @@
 <div class="topic-footer">
   <ul>
     <li><a ui-sref="home">Home</a></li>
-    <li ng-if="main.isAuthenticated()"><a ui-sref="Profile">My Profile</a></li>
-    <li><button>Back To The Top</button></li>
+    <li ng-if="main.isAuthenticated()"><a ui-sref="profile">My Profile</a></li>
   </ul>
 </div>

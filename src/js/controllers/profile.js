@@ -11,6 +11,8 @@ function ProfileCtrl(User, $auth) {
 
   User.get({ id: $auth.getPayload().id }).$promise.then((user) => {
     vm.user = user;
+    vm.user.messages_sent.reverse();
+    vm.user.messages_received.reverse();
   });
   vm.edit = edit;
 
@@ -32,7 +34,7 @@ function ProfileMessageCtrl(Message, User) {
 
   function privateMessage() {
     Message
-    .save(vm.message)
+    .save({ id: vm.message.id, message: vm.message })
     .$promise
     .then((response) => {
       vm.message = {};
@@ -44,14 +46,11 @@ function ProfileMessageCtrl(Message, User) {
 ProfileEditCtrl.$inject = ['User'];
 function ProfileEditCtrl(User) {
   const vm = this;
-  // vm.kek = function() {
-  //   var hello = document.querySelectorAll('button')[1];
-  //   hello.innerHTML = 'Cmon SON';
-  // };
+
 }
 
-ProfileInboxCtrl.$inject = ['User'];
-function ProfileInboxCtrl(User) {
+ProfileInboxCtrl.$inject = ['Message'];
+function ProfileInboxCtrl(Message) {
   const vm = this;
 
 }

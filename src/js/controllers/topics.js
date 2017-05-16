@@ -12,8 +12,8 @@ function TopicsIndexCtrl(Topic) {
 
 }
 
-TopicsShowCtrl.$inject = ['Topic', '$stateParams', 'Comment', 'Subtitle', 'Vote', '$state'];
-function TopicsShowCtrl(Topic, $stateParams, Comment, Subtitle, Vote, $state) {
+TopicsShowCtrl.$inject = ['Topic', '$stateParams', 'Comment', 'Subtitle', 'Vote', '$state', '$window'];
+function TopicsShowCtrl(Topic, $stateParams, Comment, Subtitle, Vote, $state, $window) {
   const vm = this;
 
   Topic.get($stateParams).$promise.then((topic) => {
@@ -46,7 +46,7 @@ function TopicsShowCtrl(Topic, $stateParams, Comment, Subtitle, Vote, $state) {
         vm.comment = {};
       });
   }
-  
+
   vm.postSubtitle = postSubtitle;
 
   function postSubtitle() {

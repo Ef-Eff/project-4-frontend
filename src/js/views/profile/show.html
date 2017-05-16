@@ -6,12 +6,13 @@
   </div>
 
   <div class="row profile-options">
-    <a ui-sref="profile.inbox" ui-sref-active="active">Inbox</a>
+    <a ui-sref="profile.inbox" ui-sref-active="active">InOutbox</a>
     <a ui-sref="profile.message" ui-sref-active="active">Private Message</a>
-    <a ui-sref="profile.edit" ui-sref-active="active">Edit Profile</a>
+    <a ui-sref="profile.edit" ui-sref-active="active">Edit</a>
   </div>
   <div class="profile-wrapper">
     <section ui-view class="row profile-settings">
+      <span class="profile-not-picked">Select an option above.</span>
     </section>
   </div>
 </div>

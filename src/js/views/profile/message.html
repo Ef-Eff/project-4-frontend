@@ -4,6 +4,8 @@
     <input type="text" ng-model="profileMessage.message.subject" name="subject" id="subject"><br>
     <label for="body">Body</label><br>
     <textarea ng-model="profileMessage.message.body" name="body" id="body"></textarea><br>
+    <input type="file" base64 label name="base64" id="base64" class="base64" ng-model="profileMessage.message.base64">
+    <label for="base64" id="message-img">Image</label>
     <button>Submit</button>
   </form>
 
@@ -13,5 +15,13 @@
       <option disabled selected value="">Select a user</option>
       <option ng-repeat="user in profileMessage.users" ng-value="user.id">{{ user.username }}</option>
     </select>
+    <div ng-if="profileMessage.recentMessage">
+      <p>Sent {{ profileMessage.recentMessage.created_at | date: 'short' }}<br>
+        To {{ profileMessage.recentMessage.receiver.username }}<br>
+        Subject: {{ profileMessage.recentMessage.subject }}
+        <img ng-if="profileMessage.recentMessage.image_src" ng-src="{{ profileMessage.recentMessage.image_src }}">
+      </p>
+    </div>
+
   </div>
 </div>

@@ -1,11 +1,10 @@
 <div class="container">
-
-<ul class="row">
-  <li ng-repeat="topic in topicsIndex.all" class="col-md-4 col-sm-6 topics-index">
-    <h1><a ui-sref="topicsShow({id: topic.id, page: 1 })">{{ topic.title }}</a></h1>
-    <h3 ng-if="topic.subtitles.length">{{ topic.selected_subtitle }}</h3>
-    <h4>{{ topic.comments.length }} Comments</h4>
-    <h4>{{ topic.tweet_volume | number }} Tweets</h4>
-  </li>
-</ul>
+  <ul class="row">
+    <li ng-repeat="topic in topicsIndex.all" class="col-sm-6 topics-index">
+      <h2><a ui-sref="topicsShow({id: topic.id })">{{ topic.title }}</a></h2>
+      <h3 ng-if="topic.subtitles.length">{{ topic.selected_subtitle }}</h3>
+      <h4>{{ topic.comments.length }} <span ng-if="topic.comments.length === 1">Comment</span><span ng-if="topic.comments.length != 1">Comments</span></h4>
+      <h4>{{ topic.tweet_volume | number }} Tweets</h4>
+    </li>
+  </ul>
 </div>
